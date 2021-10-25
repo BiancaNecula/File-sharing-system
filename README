@@ -1,0 +1,29 @@
+Necula Bianca 325CA
+
+Implementati un sistem minimal de file sharing. Sistemul va consta dintr-un server care tine evidenta, pentru fiecare fisier partajat, unde se afla acesta (fd-ul clientului detinator), si dintr-un numar variabil de clienti care partajeaza, respectiv downloadeaza fisiere.
+
+Comenzi client:
+
+-          SHARE <filename> - transmite server-ului faptul ca vrea sa partaseze un anumit fisier
+
+-          UNSHARE <filename> - transmite server-ului ca nu vrea sa mai partaseze un fisier partajat anterior
+
+-          LIST – cere o lista de fisiere disponibile server-ului, o afiseaza la primire
+
+-          DOWNLOAD <filename> - manifestarea intentiei de descarcare a unui fisier; server-ul intermediaza transferul, descarca fisierul de la clientul care il detine, il trimite catre clientul care il cere
+
+Flow minim necesar (pe langa implementarea din spate) pentru a primi punctajul maxim:
+
+1.       Porneste server-ul.
+
+2.       Porneste primul client, se conecteaza la server, trimite “SHARE <filename>”; Server-ul salveaza asocierea, afiseaza mesaj corespunzator.
+
+3.       Porneste al doilea client, se conecteaza la server, trimite “LIST”; Primeste inapoi lista de fisiere si o afiseaza.
+
+4.       Al doilea client trimite “DOWNLOAD <filename>” catre server.
+
+5.       Serverul preia fisierul de 1MB (hint: dd) de la primul client si il trimite catre al doilea.
+
+6.       Diff pe fisiere, acestea sunt identice.
+
+7.       Primul client trimite “UNSHARE <filename>” la server; Server-ul sterge asocierea, afiseaza mesaj corespunzator.
